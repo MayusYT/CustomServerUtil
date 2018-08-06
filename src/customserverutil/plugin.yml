@@ -1,0 +1,14 @@
+name: CustomServerUtil
+authors: [Mayus, Pepe44, Ayley, Tallerik]
+version: 1.0
+commands:
+    c:
+        description: Creative mode
+    s:
+        description: Survival mode
+    sethome:
+        description: Setzt ein Home.
+        usage: "/sethome <name>"
+    home:
+        description: Wenn 1. Argument Name ist, dann TP; wenn 1. Argument 'list' ist, dann Auflistung der Homes.
+        usage: "/home <name/list>"

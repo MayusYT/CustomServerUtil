@@ -1,8 +1,0 @@
-name: CustomServerUtil
-authors: [Mayus, Pepe44, Ayley, Tallerik]
-version: 1.0
-commands:
-    c:
-        description: Creative mode
-    s:
-        description: Survival mode
