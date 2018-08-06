@@ -14,31 +14,39 @@ public class HomeCMD implements CommandExecutor {
         if(command.getName().equalsIgnoreCase("home")) {
 
             if(args.length == 1) {
-                if(HomeCfg.Config.get("homes." + p.getName() + "." + args[0]) != null) {
-                    if(HomeCfg.getHomeAmount(p) <= 3) {
+                if(args[0].equalsIgnoreCase("list")) {
 
-                    } if(p.hasPermission("CustomServerUtil.15homes")) {
-
-                        if(HomeCfg.getHomeAmount(p) <= 10) {
-
-                        } else {
-                            p.sendMessage(CustomServerUtil.prefix + "§cTrotz deines §6Premium Rangs §cwurden deine maximalen Homes(10) erreicht. Zur Zeit ist aus Platzgründen leider nicht mehr möglich, sorry D:");
-                        }
-
-                    } else {
-
-                        p.sendMessage(CustomServerUtil.prefix + "cDie maximale Anzahl an Homes wurde erreicht. §r Mit dem §6 Premium Rang§r kannst du bis zu 10 Homes festlegen!");
-                    }
                 } else {
-                    p.sendMessage(CustomServerUtil.prefix + "§cDieses Home existiert nicht. Zum setzen: §r/sethome" + args[0]);
+                    if(HomeCfg.Config.get("homes." + p.getName() + "." + args[0]) != null) {
+                        //TODO:
+                        p.teleport(HomeCfg.getHomeLoc(p, args[0]));
+                        p.sendMessage(CustomServerUtil.prefix + "§aTeleportiert!");
+                    } else {
+                        p.sendMessage(CustomServerUtil.prefix + "§cDieses Home existiert nicht. Zum setzen: §r/sethome" + args[0]);
+                    }
                 }
+
             } else {
                 p.sendMessage(CustomServerUtil.prefix + "§cBenutzung: /home <name/list>");
             }
 
         } if(command.getName().equalsIgnoreCase("sethome")) {
             if(args.length == 1) {
+                if(HomeCfg.getHomeAmount(p) <= 3) {
+                    HomeCfg.setHome(p, p.getLocation(), args[0]);
+                    p.sendMessage( CustomServerUtil.prefix + "§aHome §3" + args[0] + " §agesetzt.");
+                } if(p.hasPermission("CustomServerUtil.15homes")) {
 
+                    if(HomeCfg.getHomeAmount(p) <= 10) {
+
+                    } else {
+                        p.sendMessage(CustomServerUtil.prefix + "§cTrotz deines §6Premium Rangs §cwurden deine maximalen Homes(10) erreicht. Zur Zeit ist aus Platzgründen leider nicht mehr möglich, sorry D:");
+                    }
+
+                } else {
+
+                    p.sendMessage(CustomServerUtil.prefix + "cDie maximale Anzahl an Homes wurde erreicht. §r Mit dem §6 Premium Rang§r kannst du bis zu 10 Homes festlegen!");
+                }
             } else {
                 p.sendMessage(CustomServerUtil.prefix + "§cBenutzung: /sethome <name>");
             }

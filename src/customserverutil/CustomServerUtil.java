@@ -1,6 +1,7 @@
 
 package customserverutil;
 
+import customserverutil.home.HomeCMD;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CustomServerUtil extends JavaPlugin {
@@ -11,7 +12,12 @@ public class CustomServerUtil extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        init();
+    }
 
+    public void init() {
+        getCommand("home").setExecutor(new HomeCMD());
+        getCommand("sethome").setExecutor(new HomeCMD());
     }
 
     @Override

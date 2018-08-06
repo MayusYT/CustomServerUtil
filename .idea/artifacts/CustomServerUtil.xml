@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CustomServerUtil">
+    <output-path>$PROJECT_DIR$/out/artifacts/CustomServerUtil</output-path>
+    <root id="archive" name="CustomServerUtil.jar">
+      <element id="module-output" name="CustomServerUtil" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/customserverutil/plugin.yml" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/customserverutil/API.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/customserverutil/CustomServerUtil.java" />
+    </root>
+  </artifact>
+</component>

@@ -14,7 +14,7 @@ import java.util.List;
 
 public class HomeCfg {
 
-    public static File ConfigFile = new File("plugins/CustomLobby", "bans.yml");
+    public static File ConfigFile = new File("plugins/CustomLobby", "homes.yml");
     public static FileConfiguration Config = YamlConfiguration.loadConfiguration(ConfigFile);
 
     public static void saveHome() {
