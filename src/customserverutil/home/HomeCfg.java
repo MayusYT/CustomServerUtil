@@ -43,7 +43,7 @@ public class HomeCfg {
         } else {
             Config.set("homes." + p.getName() + ".amount", 1);
         }
-        Config.set("homes." + p.getName() + "." + name + ".WORLD", loc.getWorld().getUID().toString());
+        Config.set("homes." + p.getName() + "." + name + ".WORLD", loc.getWorld().getName());
         Config.set("homes." + p.getName() + "." + name + ".X", loc.getX());
         Config.set("homes." + p.getName() + "." + name + ".Y", loc.getY());
         Config.set("homes." + p.getName() + "." + name + ".Z", loc.getZ());
