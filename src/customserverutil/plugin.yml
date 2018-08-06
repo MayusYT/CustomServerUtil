@@ -1,6 +1,7 @@
 name: CustomServerUtil
 authors: [Mayus, Pepe44, Ayley, Tallerik]
 version: 1.0
+main: customserverutil.CustomServerUtil
 commands:
     c:
         description: Creative mode

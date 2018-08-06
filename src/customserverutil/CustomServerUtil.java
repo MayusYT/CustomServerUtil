@@ -4,6 +4,7 @@ package customserverutil;
 import customserverutil.home.HomeCMD;
 import org.bukkit.plugin.java.JavaPlugin;
 
+
 public class CustomServerUtil extends JavaPlugin {
     public static CustomServerUtil instance;
     public static String prefix = "§7[§3System§7]§5 > §r";
@@ -11,6 +12,10 @@ public class CustomServerUtil extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        System.out.println("############################");
+        System.out.println("CustomServerUtil gestartet!");
+        System.out.println("############################");
         instance = this;
         init();
     }

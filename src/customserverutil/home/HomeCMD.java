@@ -17,8 +17,7 @@ public class HomeCMD implements CommandExecutor {
                 if(args[0].equalsIgnoreCase("list")) {
 
                 } else {
-                    if(HomeCfg.Config.get("homes." + p.getName() + "." + args[0]) != null) {
-                        //TODO:
+                    if(HomeCfg.Config.get("homes." + p.getName() + "."+ args[0] + ".X") != null) {
                         p.teleport(HomeCfg.getHomeLoc(p, args[0]));
                         p.sendMessage(CustomServerUtil.prefix + "§aTeleportiert!");
                     } else {

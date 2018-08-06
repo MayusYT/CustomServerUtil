@@ -14,7 +14,8 @@ import java.util.List;
 
 public class HomeCfg {
 
-    public static File ConfigFile = new File("plugins/CustomLobby", "homes.yml");
+
+    public static File ConfigFile = new File("plugins/CustomServerUtil", "homes.yml");
     public static FileConfiguration Config = YamlConfiguration.loadConfiguration(ConfigFile);
 
     public static void saveHome() {
@@ -42,7 +43,7 @@ public class HomeCfg {
         } else {
             Config.set("homes." + p.getName() + ".amount", 1);
         }
-        Config.set("homes." + p.getName() + "." + name + ".WORLD", loc.getWorld());
+        Config.set("homes." + p.getName() + "." + name + ".WORLD", loc.getWorld().getUID().toString());
         Config.set("homes." + p.getName() + "." + name + ".X", loc.getX());
         Config.set("homes." + p.getName() + "." + name + ".Y", loc.getY());
         Config.set("homes." + p.getName() + "." + name + ".Z", loc.getZ());
@@ -52,9 +53,6 @@ public class HomeCfg {
         reloadHome();
     }
     public static Location getHomeLoc(Player p, String name) {
-        if(Config.get("homes." + p.getName()) != null) {
-            if(Config.get("homes" + p.getName() + "." + name) != null) {
-
                 World locworld = Bukkit.getWorld(Config.getString("homes." + p.getName() + "." + name + ".WORLD"));
                 Double locx = Double.parseDouble(Config.getString("homes." + p.getName() + "." + name + ".X"));
                 Double locy = Double.parseDouble(Config.getString("homes." + p.getName() + "." + name + ".Y"));
@@ -63,12 +61,6 @@ public class HomeCfg {
                 Float locyaw = Float.parseFloat(Config.getString("homes." + p.getName() + "." + name + ".YAW"));
                 Location loc = new Location(locworld, locx, locy, locz, locyaw, locpitch);
                 return loc;
-            } else {
-                return null;
-            }
-        } else {
-            return null;
-        }
 
     }
     public static Integer getHomeAmount(Player p) {
