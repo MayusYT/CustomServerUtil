@@ -1,12 +1,10 @@
 
 package customserverutil;
 
-import customserverutil.essential.Day;
-import customserverutil.essential.PluginConfig;
-import customserverutil.essential.RlCFGCMD;
-import customserverutil.essential.Sun;
+import customserverutil.essential.*;
 import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
+import customserverutil.servergui.ServerHandlerCMD;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -26,6 +24,9 @@ public class CustomServerUtil extends JavaPlugin {
     }
 
     public void init() {
+
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+
         getCommand("home").setExecutor(new HomeCMD());
         getCommand("sethome").setExecutor(new HomeCMD());
 
@@ -37,11 +38,14 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("day").setExecutor(new Day());
         getCommand("rlcfg").setExecutor(new RlCFGCMD());
 
-
+        getCommand("server").setExecutor(new ServerHandlerCMD());
         //Config-Defaults
-        PluginConfig.Config.set("settings.enableHomes", true);
-        PluginConfig.saveCFG();
-        PluginConfig.reloadCFG();
+        if(PluginConfig.ConfigFile.length() == 0) {
+            PluginConfig.Config.set("settings.enableHomes", true);
+            PluginConfig.saveCFG();
+            PluginConfig.reloadCFG();
+        }
+
     }
 
     @Override
