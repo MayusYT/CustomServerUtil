@@ -7,9 +7,15 @@ commands:
         description: Creative mode
     s:
         description: Survival mode
+    sp:
+        description: Spectator mode
     sethome:
         description: Setzt ein Home.
         usage: "/sethome <name>"
     home:
         description: Wenn 1. Argument Name ist, dann TP; wenn 1. Argument 'list' ist, dann Auflistung der Homes.
         usage: "/home <name/list>"
+    sun:
+        description: Clears the sky.
+    day:
+        description: Sets the daytime to 0.

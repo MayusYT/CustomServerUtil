@@ -1,6 +1,9 @@
 
 package customserverutil;
 
+import customserverutil.essential.Day;
+import customserverutil.essential.Sun;
+import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,6 +26,13 @@ public class CustomServerUtil extends JavaPlugin {
     public void init() {
         getCommand("home").setExecutor(new HomeCMD());
         getCommand("sethome").setExecutor(new HomeCMD());
+
+        getCommand("s").setExecutor(new GameModes());
+        getCommand("c").setExecutor(new GameModes());
+        getCommand("sp").setExecutor(new GameModes());
+
+        getCommand("sun").setExecutor(new Sun());
+        getCommand("day").setExecutor(new Day());
     }
 
     @Override
