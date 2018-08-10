@@ -3,6 +3,7 @@ package customserverutil;
 
 import customserverutil.essential.Day;
 import customserverutil.essential.PluginConfig;
+import customserverutil.essential.RlCFGCMD;
 import customserverutil.essential.Sun;
 import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
@@ -34,10 +35,13 @@ public class CustomServerUtil extends JavaPlugin {
 
         getCommand("sun").setExecutor(new Sun());
         getCommand("day").setExecutor(new Day());
+        getCommand("rlcfg").setExecutor(new RlCFGCMD());
 
 
         //Config-Defaults
-        PluginConfig.Config.addDefault("settings.enableHomes", true);
+        PluginConfig.Config.set("settings.enableHomes", true);
+        PluginConfig.saveCFG();
+        PluginConfig.reloadCFG();
     }
 
     @Override

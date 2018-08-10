@@ -19,3 +19,5 @@ commands:
         description: Clears the sky.
     day:
         description: Sets the daytime to 0.
+    rlcfg:
+        description: Reloads the config.
