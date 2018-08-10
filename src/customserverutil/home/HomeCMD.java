@@ -12,23 +12,26 @@ public class HomeCMD implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         Player p = (Player) sender;
         if(command.getName().equalsIgnoreCase("home")) {
+            if(customserverutil.essential.PluginConfig.Config.getBoolean("settings.enableHomes") == true) {
 
-            if(args.length == 1) {
-                if(args[0].equalsIgnoreCase("list")) {
+                if (args.length == 1) {
+                    if (args[0].equalsIgnoreCase("list")) {
+
+                    } else {
+                        if (HomeCfg.Config.get("homes." + p.getName() + "." + args[0] + ".X") != null) {
+                            p.teleport(HomeCfg.getHomeLoc(p, args[0]));
+                            p.sendMessage(CustomServerUtil.prefix + "§aTeleportiert!");
+                        } else {
+                            p.sendMessage(CustomServerUtil.prefix + "§cDieses Home existiert nicht. Zum setzen: §r/sethome" + args[0]);
+                        }
+                    }
 
                 } else {
-                    if(HomeCfg.Config.get("homes." + p.getName() + "."+ args[0] + ".X") != null) {
-                        p.teleport(HomeCfg.getHomeLoc(p, args[0]));
-                        p.sendMessage(CustomServerUtil.prefix + "§aTeleportiert!");
-                    } else {
-                        p.sendMessage(CustomServerUtil.prefix + "§cDieses Home existiert nicht. Zum setzen: §r/sethome" + args[0]);
-                    }
+                    p.sendMessage(CustomServerUtil.prefix + "§cBenutzung: /home <name/list>");
                 }
-
             } else {
-                p.sendMessage(CustomServerUtil.prefix + "§cBenutzung: /home <name/list>");
+                p.sendMessage(CustomServerUtil.prefix + "§cFür diesen Server sind Homes deaktiviert. Siehe config.yml");
             }
-
         } if(command.getName().equalsIgnoreCase("sethome")) {
             if(args.length == 1) {
                 if(customserverutil.essential.PluginConfig.Config.getBoolean("settings.enableHomes") == true) {
