@@ -1,5 +1,6 @@
 package customserverutil.home;
 
+import customserverutil.essential.PluginConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
