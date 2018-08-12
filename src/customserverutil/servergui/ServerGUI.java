@@ -24,7 +24,7 @@ public class ServerGUI {
             pane.setItemMeta(panemeta);
             inv.setItem(i, pane);
         }
-        inv.setItem(5, ItemAPI.createItem(Material.WOOD_DOOR, "§aLobby", (byte) 0, 1));
+        inv.setItem(4, ItemAPI.createItem(Material.WOOD_DOOR, "§aLobby", (byte) 0, 1));
         inv.setItem(10, ItemAPI.createItem(Material.GRASS, "§aSky§7Block", (byte) 0, 1));
         inv.setItem(12, ItemAPI.createItem(Material.BRICK, "§4City§bBuild", (byte) 0, 1));
         inv.setItem(14, ItemAPI.createItem(Material.CHEST, "§3Sky§7Wars", (byte) 0, 1));

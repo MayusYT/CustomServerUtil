@@ -5,6 +5,8 @@ import customserverutil.essential.*;
 import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
 import customserverutil.servergui.ServerHandlerCMD;
+import customserverutil.servergui.ServerHandlerListener;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -39,6 +41,9 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("rlcfg").setExecutor(new RlCFGCMD());
 
         getCommand("server").setExecutor(new ServerHandlerCMD());
+
+        Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         //Config-Defaults
         if(PluginConfig.ConfigFile.length() == 0) {
             PluginConfig.Config.set("settings.enableHomes", true);

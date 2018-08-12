@@ -3,6 +3,7 @@ package customserverutil.servergui;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import customserverutil.CustomServerUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +17,6 @@ public class ServerHandlerListener implements Listener {
     public void onServerInvClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         if(e.getClickedInventory().getName().equalsIgnoreCase("§bNavigator")) {
-
             if(e.getCurrentItem().getType() == Material.WOOD_DOOR) {
                 ByteArrayDataOutput out = ByteStreams.newDataOutput();
                 out.writeUTF("Connect");

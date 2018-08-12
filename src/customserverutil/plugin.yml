@@ -21,3 +21,5 @@ commands:
         description: Sets the daytime to 0.
     rlcfg:
         description: Reloads the config.
+    server:
+        description: Opens a gui for teleportation.
