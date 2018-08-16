@@ -5,6 +5,7 @@ import net.minecraft.server.v1_8_R3.ChatComponentText;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
 import net.minecraft.server.v1_8_R3.PlayerConnection;
+import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -12,46 +13,45 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.lang.reflect.Field;
 
 public class Tablist {
-    public static boolean stage = false;
-    public static void setForPlayer(Player p){
-        CraftPlayer cplayer = (CraftPlayer) p;
-        PlayerConnection connection = cplayer.getHandle().playerConnection;
-        PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
-        new BukkitRunnable(){
-            @Override
-            public void run() {
-                try{
-                    Field a = packet.getClass().getDeclaredField("a");
-                    a.setAccessible(true);
-                    Field b = packet.getClass().getDeclaredField("b");
-                    b.setAccessible(true);
+    public static int stage = 0;
+    public static String toJsonString(String input) {
+        return "{\"text\":\"" + input + "\"}";
+    }
+    public static void updateTab(String header, String footer, Player p) {
+        PacketPlayOutPlayerListHeaderFooter tab = new PacketPlayOutPlayerListHeaderFooter(IChatBaseComponent.ChatSerializer.a(toJsonString(header)));
+        try {
+            Field a = tab.getClass().getDeclaredField("a");
+            a.setAccessible(true);
+            a.set(tab, IChatBaseComponent.ChatSerializer.a(toJsonString(header)));
+            a.setAccessible(false);
 
-                    Object header1 = new ChatComponentText("§aWillkommen!");
-                    Object header2 = new ChatComponentText("§2Willkommen!");
+            Field b = tab.getClass().getDeclaredField("b");
+            b.setAccessible(true);
+            b.set(tab, IChatBaseComponent.ChatSerializer.a(toJsonString(footer)));
+            b.setAccessible(false);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ((CraftPlayer) p).getHandle().playerConnection.sendPacket(tab);
+    }
 
+    private static volatile int tier;
+    public static void repeatingTab() {
 
+        String defaultHeader = "Wilkommen, ";
 
-                    Object footer = new ChatComponentText("Website: snapecraft.ddns.net");
-                    if(stage) {
-                        a.set(packet, header1);
-                        stage = false;
-                    }
-                    else {
-                        a.set(packet, header2);
-                        stage = true;
-                    }
-                    b.set(packet, footer);
-                    connection.sendPacket(packet);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(CustomServerUtil.getInstance(), () -> {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                String header = defaultHeader + p.getName();
+                int stage = tier % header.length();
+                String h = "§a" + header.substring(0, stage) + "§2" + header.charAt(stage + 1) + "§a" + header.substring(stage + 1);
 
+                updateTab(h, "Your wonderful footer", p);
             }
 
-            }.runTaskTimer(CustomServerUtil.getInstance(), 0, 20);
-        }
-
+        }, 20, 20);
+    }
 
 
 }

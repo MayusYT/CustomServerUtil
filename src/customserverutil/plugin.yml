@@ -2,6 +2,7 @@ name: CustomServerUtil
 authors: [Mayus, Pepe44, Ayley, Tallerik]
 version: 1.0
 main: customserverutil.CustomServerUtil
+softdepend: [PermissionsEx]
 commands:
     c:
         description: Creative mode
@@ -23,3 +24,15 @@ commands:
         description: Reloads the config.
     server:
         description: Opens a gui for teleportation.
+    mail:
+        description: ruft deine Mails ab
+    sendmail:
+        description: Sendet einem Spieler eine Mail
+    ban:
+        description: Bannt einen Spieler
+    pardon:
+        description: Entbannt einen Spieler
+    warn:
+        description: Verwarnt einen Spieler
+    nick:
+        description: Gibt dir einen Nicknamen.

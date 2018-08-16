@@ -1,12 +1,20 @@
 
 package customserverutil;
 
+import customserverutil.banmanager.Banmanager;
+import customserverutil.banmanager.PardonHandler;
+import customserverutil.banmanager.WarnHandler;
+import customserverutil.chat.ChatListener;
 import customserverutil.essential.*;
 import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
+import customserverutil.mail.MailCMD;
+import customserverutil.mail.SendMailCMD;
 import customserverutil.servergui.ServerHandlerCMD;
 import customserverutil.servergui.ServerHandlerListener;
+import customserverutil.tablist.Tablist;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -14,15 +22,28 @@ public class CustomServerUtil extends JavaPlugin {
     public static CustomServerUtil instance;
     public static String prefix = "§7[§3System§7]§5 > §r";
     public static String noPermission = prefix + "§cDu hast nicht die nötige Berechtigung, um diesen Befehl auszuführen";
+    public static Boolean pexenabled = false;
 
     @Override
     public void onEnable() {
 
+
+        init();
+
         System.out.println("############################");
         System.out.println("CustomServerUtil gestartet!");
         System.out.println("############################");
+        if(Bukkit.getPluginManager().getPlugin("PermissionsEx").isEnabled()) {
+            pexenabled = true;
+            System.out.println("PermissionsEX wurde geladen!");
+        } else {
+            pexenabled = false;
+            System.out.println("PermissionsEX konnte nicht geladen werden!");
+        }
         instance = this;
-        init();
+
+        Tablist.repeatingTab();
+
     }
 
     public void init() {
@@ -41,10 +62,26 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("rlcfg").setExecutor(new RlCFGCMD());
 
         getCommand("server").setExecutor(new ServerHandlerCMD());
-
+        getCommand("ban").setExecutor(new Banmanager());
+        getCommand("warn").setExecutor(new WarnHandler());
+        getCommand("pardon").setExecutor(new PardonHandler());
+        getCommand("sendmail").setExecutor(new SendMailCMD());
+        getCommand("mail").setExecutor(new MailCMD());
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
+        Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
         //Config-Defaults
+        PluginConfig.Config.addDefault("player.DEFAULT.exist", false);
+        PluginConfig.Config.addDefault("spawn.DEFAULT.exist", false);
+
+        PluginConfig.Config.addDefault("SQL.host", "");
+        PluginConfig.Config.addDefault("SQL.user", "");
+        PluginConfig.Config.addDefault("SQL.pw", "");
+        PluginConfig.Config.addDefault("SQL.db", "");
+
+        PluginConfig.Config.options().copyDefaults(true);
+        PluginConfig.saveCFG();
+        PluginConfig.reloadCFG();
         if(PluginConfig.ConfigFile.length() == 0) {
             PluginConfig.Config.set("settings.enableHomes", true);
             PluginConfig.saveCFG();
