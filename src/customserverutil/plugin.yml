@@ -36,3 +36,5 @@ commands:
         description: Verwarnt einen Spieler
     nick:
         description: Gibt dir einen Nicknamen.
+    ping:
+        description: Zeigt deinen Ping an.

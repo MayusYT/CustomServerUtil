@@ -1,21 +1,19 @@
 package customserverutil.tablist;
 
 import customserverutil.CustomServerUtil;
-import net.minecraft.server.v1_8_R3.ChatComponentText;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
-import net.minecraft.server.v1_8_R3.PlayerConnection;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
+
 
 import java.lang.reflect.Field;
 
 public class Tablist {
     public static int stage = 0;
     public static String toJsonString(String input) {
-        return "{\"text\":\"" + input + "\"}";
+        return "{'text':'" + input + "'}";
     }
     public static void updateTab(String header, String footer, Player p) {
         PacketPlayOutPlayerListHeaderFooter tab = new PacketPlayOutPlayerListHeaderFooter(IChatBaseComponent.ChatSerializer.a(toJsonString(header)));

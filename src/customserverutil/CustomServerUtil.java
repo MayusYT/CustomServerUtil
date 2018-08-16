@@ -10,6 +10,7 @@ import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
 import customserverutil.mail.MailCMD;
 import customserverutil.mail.SendMailCMD;
+import customserverutil.nick.Nick;
 import customserverutil.servergui.ServerHandlerCMD;
 import customserverutil.servergui.ServerHandlerListener;
 import customserverutil.tablist.Tablist;
@@ -67,6 +68,12 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("pardon").setExecutor(new PardonHandler());
         getCommand("sendmail").setExecutor(new SendMailCMD());
         getCommand("mail").setExecutor(new MailCMD());
+        getCommand("nick").setExecutor(new Nick());
+        getCommand("ping").setExecutor(new PingCMD());
+
+
+
+
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
