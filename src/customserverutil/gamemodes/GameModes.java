@@ -25,7 +25,7 @@ public class GameModes implements CommandExecutor {
                 } if(command.getName().equalsIgnoreCase("sp")) {
                     p.setGameMode(GameMode.SPECTATOR);
                 }
-            } if(args.length == 1) {
+            } else if(args.length == 1) {
                 if(Bukkit.getPlayer(args[0]) != null) {
                     if(command.getName().equalsIgnoreCase("s")) {
                         Bukkit.getPlayer(args[0]).setGameMode(GameMode.SURVIVAL);

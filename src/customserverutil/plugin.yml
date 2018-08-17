@@ -38,3 +38,12 @@ commands:
         description: Gibt dir einen Nicknamen.
     ping:
         description: Zeigt deinen Ping an.
+    warp:
+        description: Bringt dich zu einem Warp
+    setwarp:
+        description: Setzt einen Warp
+        usage: "/setwarp <Name> <Range>"
+    removewarp:
+        description: Entfernt einen Warp
+    spawn:
+        description: Bringt dich zum Warp 'spawn'.

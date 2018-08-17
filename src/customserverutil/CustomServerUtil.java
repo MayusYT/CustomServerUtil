@@ -14,6 +14,7 @@ import customserverutil.nick.Nick;
 import customserverutil.servergui.ServerHandlerCMD;
 import customserverutil.servergui.ServerHandlerListener;
 import customserverutil.tablist.Tablist;
+import customserverutil.warp.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -70,10 +71,13 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("mail").setExecutor(new MailCMD());
         getCommand("nick").setExecutor(new Nick());
         getCommand("ping").setExecutor(new PingCMD());
+        getCommand("warp").setExecutor(new WarpCMD());
+        getCommand("setwarp").setExecutor(new SetWarpCMD());
+        getCommand("removewarp").setExecutor(new RemoveWarpCMD());
+        getCommand("spawn").setExecutor(new SpawnCMD());
 
 
-
-
+        Bukkit.getPluginManager().registerEvents(new WarpProtection(), this);
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
