@@ -15,8 +15,8 @@ public class AcceptTpa {
         if(SendTpa.tpaMap.containsKey(s) && SendTpa.tpaMap.get(s).equalsIgnoreCase(p.getName())) {
             SendTpa.tpaMap.remove(s, p.getName());
             Bukkit.getPlayer(s).sendMessage(CustomServerUtil.prefix + "§6" + p.getName() + " §ahat deine Teleportanfrage angenommen!");
-            p.teleport(Bukkit.getPlayer(s));
-            p.sendMessage(CustomServerUtil.prefix + "§aDu wurdest zum Spieler §6" + s + " §ateleportiert!");
+            Bukkit.getPlayer(s).teleport(p);
+            Bukkit.getPlayer(s).sendMessage(CustomServerUtil.prefix + "§aDu wurdest zum Spieler §6" + p.getName() + " §ateleportiert!");
         } else {
             p.sendMessage(CustomServerUtil.prefix + "§cDu hast keine Teleportanfrage von diesem Spieler bekommen!");
         }
