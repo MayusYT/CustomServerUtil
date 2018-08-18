@@ -11,11 +11,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static customserverutil.CustomServerUtil.getInstance;
 
 public class PlayerJoin implements Listener {
-    public StringBuilder sb = new StringBuilder();
-    public String onlineFriends = "";
+
     @EventHandler
     public void playerJoin(PlayerJoinEvent e) {
         SQLConfig conf = new SQLConfig();
@@ -39,23 +41,24 @@ public class PlayerJoin implements Listener {
         }
 
         try{
-            for(Player ply : Bukkit.getOnlinePlayers()) {
-                if(!ply.getName().equalsIgnoreCase(p.getName())) {
-                    for(String plyer : conf.getFriends(ply.getName())) {
-                        if(plyer.equalsIgnoreCase(p.getName())) {
 
-                            sb.append(ply.getName() + ", ");
-                        }
-                    }
-
+            List<String> onlineFriends = new ArrayList<>();
+            for(String friend : conf.getFriends(p.getName())) {
+                if(Bukkit.getPlayer(friend) != null) {
+                    onlineFriends.add(friend);
                 }
 
+
             }
-            onlineFriends = sb.toString();
-            if(sb.length() != 0) {
-                p.sendMessage(CustomServerUtil.prefix + "§aFolgende Freunde sind online: §6" + onlineFriends);
+
+            String text = onlineFriends.toString();
+            String result = text.replaceAll("\\[", "");
+            String endresult = result.replaceAll("\\]", "");
+
+            if (endresult.length() > 3) {
+                p.sendMessage(CustomServerUtil.prefix + "§aFolgende Freunde sind online: §6");
             } else {
-                p.sendMessage(CustomServerUtil.prefix + "§aZur Zeit ist keiner deiner Freunde online :c");
+                p.sendMessage(CustomServerUtil.prefix + "§aZur Zeit sind §ckeine §aFreunde von dir online");
             }
 
         } catch (Exception exx) {
