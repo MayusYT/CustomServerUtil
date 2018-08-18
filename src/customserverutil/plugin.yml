@@ -61,3 +61,8 @@ commands:
         description: Erlaubt dir das Bauen in einer Range eines Warps.
     friend:
         description: Alle Friend-Commands
+    lobby:
+        description: Send dich zur Lobby
+        alias: [hub, h, leave]
+    v:
+        description: Makes your vanish

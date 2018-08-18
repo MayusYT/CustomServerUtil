@@ -88,6 +88,7 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("build").setExecutor(new BuildModeCMD());
         getCommand("friend").setExecutor(new friendsCMD());
         getCommand("v").setExecutor(new Vanish());
+        getCommand("lobby").setExecutor(new LobbyCMD());
 
         Bukkit.getPluginManager().registerEvents(new WarpProtection(), this);
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
