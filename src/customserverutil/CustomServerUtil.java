@@ -94,6 +94,8 @@ public class CustomServerUtil extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
+
+
         //Config-Defaults
         PluginConfig.Config.addDefault("player.DEFAULT.exist", false);
         PluginConfig.Config.addDefault("spawn.DEFAULT.exist", false);
