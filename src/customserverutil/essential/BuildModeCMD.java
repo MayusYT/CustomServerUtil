@@ -27,7 +27,6 @@ public class BuildModeCMD implements CommandExecutor {
         } else {
             p.sendMessage(CustomServerUtil.noPermission);
         }
-
         return true;
 
     }

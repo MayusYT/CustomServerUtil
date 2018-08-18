@@ -6,17 +6,22 @@ import customserverutil.banmanager.PardonHandler;
 import customserverutil.banmanager.WarnHandler;
 import customserverutil.chat.ChatListener;
 import customserverutil.essential.*;
+import customserverutil.friends.friendsCMD;
 import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
 import customserverutil.mail.MailCMD;
 import customserverutil.mail.SendMailCMD;
 import customserverutil.nick.Nick;
+import customserverutil.report.SpectateThatPlayerCMD;
+import customserverutil.report.reportAdminCMD;
 import customserverutil.servergui.ServerHandlerCMD;
 import customserverutil.servergui.ServerHandlerListener;
 import customserverutil.tablist.Tablist;
+import customserverutil.tpa.AcceptTpaCMD;
+import customserverutil.tpa.DeclineTpaCMD;
+import customserverutil.tpa.SendTpaCMD;
 import customserverutil.warp.*;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -75,7 +80,14 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("setwarp").setExecutor(new SetWarpCMD());
         getCommand("removewarp").setExecutor(new RemoveWarpCMD());
         getCommand("spawn").setExecutor(new SpawnCMD());
-
+        getCommand("tpa").setExecutor(new SendTpaCMD());
+        getCommand("tpaccept").setExecutor(new AcceptTpaCMD());
+        getCommand("tpdecline").setExecutor(new DeclineTpaCMD());
+        getCommand("report").setExecutor(new reportAdminCMD());
+        getCommand("spectateplayer").setExecutor(new SpectateThatPlayerCMD());
+        getCommand("build").setExecutor(new BuildModeCMD());
+        getCommand("friend").setExecutor(new friendsCMD());
+        getCommand("v").setExecutor(new Vanish());
 
         Bukkit.getPluginManager().registerEvents(new WarpProtection(), this);
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);

@@ -47,3 +47,17 @@ commands:
         description: Entfernt einen Warp
     spawn:
         description: Bringt dich zum Warp 'spawn'.
+    tpa:
+        description: Sendet einem Spieler eine Teleportanfrage
+    tpaccept:
+        description: Akzeptiert eine Teleportanfrage
+    tpdecline:
+        description: Lehnt eine Teleportanfrage ab.
+    spectateplayer:
+        description: Nur interner Zugang!
+    report:
+        description: Reportet einen Spieler.
+    build:
+        description: Erlaubt dir das Bauen in einer Range eines Warps.
+    friend:
+        description: Alle Friend-Commands

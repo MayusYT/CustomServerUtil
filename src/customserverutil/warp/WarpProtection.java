@@ -32,7 +32,7 @@ public class WarpProtection implements Listener {
 
                     }
                 }
-                if(loc.distance(e.getClickedBlock().getLocation()) <= range) {
+                if(loc.distance(e.getPlayer().getEyeLocation()) <= range) {
                     e.setCancelled(true);
                 } else {
                     e.setCancelled(false);
