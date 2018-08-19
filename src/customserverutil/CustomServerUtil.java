@@ -5,6 +5,9 @@ import customserverutil.banmanager.Banmanager;
 import customserverutil.banmanager.PardonHandler;
 import customserverutil.banmanager.WarnHandler;
 import customserverutil.chat.ChatListener;
+import customserverutil.economy.GetMoneyCMD;
+import customserverutil.economy.MoneyTransfer;
+import customserverutil.economy.SetMoneyCMD;
 import customserverutil.essential.*;
 import customserverutil.friends.friendsCMD;
 import customserverutil.gamemodes.GameModes;
@@ -14,6 +17,7 @@ import customserverutil.mail.SendMailCMD;
 import customserverutil.nick.Nick;
 import customserverutil.report.SpectateThatPlayerCMD;
 import customserverutil.report.reportAdminCMD;
+import customserverutil.scoreboard.ScoreboardListener;
 import customserverutil.servergui.ServerHandlerCMD;
 import customserverutil.servergui.ServerHandlerListener;
 import customserverutil.tablist.Tablist;
@@ -89,12 +93,15 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("friend").setExecutor(new friendsCMD());
         getCommand("v").setExecutor(new Vanish());
         getCommand("lobby").setExecutor(new LobbyCMD());
+        getCommand("money").setExecutor(new GetMoneyCMD());
+        getCommand("setmoney").setExecutor(new SetMoneyCMD());
+        getCommand("transfer").setExecutor(new MoneyTransfer());
 
         Bukkit.getPluginManager().registerEvents(new WarpProtection(), this);
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
-
+        Bukkit.getPluginManager().registerEvents(new ScoreboardListener(), this);
 
         //Config-Defaults
         PluginConfig.Config.addDefault("player.DEFAULT.exist", false);
