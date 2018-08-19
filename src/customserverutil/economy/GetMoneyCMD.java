@@ -20,14 +20,17 @@ public class GetMoneyCMD implements CommandExecutor {
         if (conf.canConnect()) {
 
             Player p = (Player) sender;
-            if (getInstance().getConfig().getString("players." + p.getName() + ".money") != null) {
-                p.sendMessage(CustomServerUtil.prefix + "Dein Kontostand: §a" + GetMoney.getMoneyByPlayer(p) + "$");
-            } else {
-                p.sendMessage(CustomServerUtil.prefix + "Glückwunsch! Du hast dein Startgeld bekommen: §a" + 1000 + "$");
-                //CustomLobby.getInstance().getConfig().set("players." + p.getName() + ".money", 1000);
-                GetMoney.setMoneyByPlayer(p, 1000);
+            try {
+                if (GetMoney.getMoneyByPlayer(p) != 0) {
+                    p.sendMessage(CustomServerUtil.prefix + "Dein Kontostand: §a" + GetMoney.getMoneyByPlayer(p) + "$");
+                } else {
+                    p.sendMessage(CustomServerUtil.prefix + "Glückwunsch! Du hast dein Startgeld bekommen: §a" + 1000 + "$");
+                    //CustomLobby.getInstance().getConfig().set("players." + p.getName() + ".money", 1000);
+                    GetMoney.setMoneyByPlayer(p, 1000);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
         } else {
             sender.sendMessage(CustomServerUtil.prefix + "§cDiese Funktion ist deaktiviert, da die Database nicht aktiviert ist! Bitte melde dich bei einem Server Administrator!");
         }

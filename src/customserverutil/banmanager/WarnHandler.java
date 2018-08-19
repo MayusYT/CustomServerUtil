@@ -20,7 +20,7 @@ public class WarnHandler implements CommandExecutor {
                         if(BanmanagerCfg.getWarns(Bukkit.getPlayer(args[0])) == 3) {
                             BanmanagerCfg.addToBans(Bukkit.getPlayer(args[0]), "Du wurdest nach 3 Warns automatisch für 15 Tage gebannt!", System.currentTimeMillis(), 15);
                             Bukkit.getPlayer(args[0]).kickPlayer("Du wurdest nach 3 Warns automatisch für 15 Tage gebannt!");
-                            // TODO: setWarns() Methode einfügen
+
                             // BanmanagerCfg.setWarns(p, Bukkit.getPlayer(args[0]), 0);
                         } else {
                             Bukkit.getPlayer(args[0]).sendMessage(CustomServerUtil.prefix + "Du hast einen §cWarn §rerhalten. Bei 3 Warns" +

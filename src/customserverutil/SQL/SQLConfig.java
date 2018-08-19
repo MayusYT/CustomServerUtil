@@ -10,7 +10,7 @@ public class SQLConfig implements SQLAPI {
 
     // Finish!
     // All functions UNTESTET!!
-    //TODO: Test
+
 
 
     private String host = "", user = "", pw = "", dbName = "";

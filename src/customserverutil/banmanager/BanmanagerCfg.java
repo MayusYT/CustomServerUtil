@@ -89,7 +89,6 @@ public class BanmanagerCfg {
 
 
 
-    //TODO: setWarns()
     /*
     public static void setWarns(Player s, Player p, Integer amount) throws IOException{
         if(Config.getString("warns." + p.getName() + ".warnamount") != null){
