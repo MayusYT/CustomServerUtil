@@ -27,6 +27,8 @@ import customserverutil.tpa.SendTpaCMD;
 import customserverutil.warp.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
 
 
 public class CustomServerUtil extends JavaPlugin {
@@ -34,10 +36,13 @@ public class CustomServerUtil extends JavaPlugin {
     public static String prefix = "§7[§3System§7]§5 > §r";
     public static String noPermission = prefix + "§cDu hast nicht die nötige Berechtigung, um diesen Befehl auszuführen";
     public static Boolean pexenabled = false;
+    public static ScoreboardManager manager;
+    public static Scoreboard board;
 
     @Override
     public void onEnable() {
-
+        manager = Bukkit.getScoreboardManager();
+        board = manager.getMainScoreboard();
 
         init();
 
@@ -58,7 +63,7 @@ public class CustomServerUtil extends JavaPlugin {
     }
 
     public void init() {
-
+        teams();
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
         getCommand("home").setExecutor(new HomeCMD());
@@ -122,6 +127,31 @@ public class CustomServerUtil extends JavaPlugin {
         }
 
     }
+
+    public void teams() {
+        //Scoreboard sb = Bukkit.getScoreboardManager().getNewScoreboard();
+        Scoreboard sb = board;
+        sb.registerNewTeam("00000Inhaber");
+        sb.registerNewTeam("00001Admin");
+        sb.registerNewTeam("00002Dev");
+        sb.registerNewTeam("00003Mod");
+        sb.registerNewTeam("00004YouTuber");
+        sb.registerNewTeam("00005Builder");
+        sb.registerNewTeam("00006Premium");
+        sb.registerNewTeam("00007Spieler");
+
+
+        sb.getTeam("00000Inhaber").setPrefix("§l§4Inhaber | §r");
+        sb.getTeam("00001Admin").setPrefix("§cAdmin | §r");
+        sb.getTeam("00002Dev").setPrefix("§l§1Dev | §r");
+        sb.getTeam("00003Mod").setPrefix("§l§aMod | §r");
+        sb.getTeam("00004YouTuber").setPrefix("§5");
+        sb.getTeam("00005Builder").setPrefix("§3");
+        sb.getTeam("00006Premium").setPrefix("§6");
+        sb.getTeam("00007Spieler").setPrefix("§r");
+
+    }
+
 
     @Override
     public void onDisable() {
