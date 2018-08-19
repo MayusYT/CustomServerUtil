@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 
 import static customserverutil.CustomServerUtil.getInstance;
@@ -34,12 +35,15 @@ public class SendMailCMD implements CommandExecutor {
                 }
                 conf.addMail(sender.getName(), args[0], msg);
                 sender.sendMessage(CustomServerUtil.prefix + "§aNachricht an §6" + args[0] + "§a gesendet.");
+
                 if(Bukkit.getPlayer(args[0]) != null) {
-                    Bukkit.getPlayer(args[0]).sendMessage(CustomServerUtil.prefix + "§aDu hast eine Nachricht von §6" + sender.getName() + " §abekommen!");
+                    Player rec  = Bukkit.getPlayer(args[0]);
                     TextComponent message1 = new TextComponent( "[§aAnsehen§r] " );
-                    message1.setClickEvent( new ClickEvent( ClickEvent.Action.RUN_COMMAND, "/mail") );
-                    Bukkit.getPlayer(args[0]).spigot().sendMessage(message1);
+                    message1.setClickEvent( new ClickEvent( ClickEvent.Action.RUN_COMMAND, "/mail" ) );
+                    rec.spigot().sendMessage(message1);
+
                 }
+
         } else {
             sender.sendMessage(CustomServerUtil.prefix + "§cUsage: §7/§6sendmail <Player> <Message>");
         }

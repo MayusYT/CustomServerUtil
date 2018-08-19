@@ -23,17 +23,10 @@ public class ServerHandlerListener implements Listener {
                 out.writeUTF("lobby");
 
                 p.sendPluginMessage(CustomServerUtil.getInstance(), "BungeeCord", out.toByteArray());
-            } else if(e.getCurrentItem().getType() == Material.BRICK) {
+            } if(e.getCurrentItem().getType() == Material.BRICK) {
                 ByteArrayDataOutput out = ByteStreams.newDataOutput();
                 out.writeUTF("Connect");
                 out.writeUTF("cb1");
-
-                p.sendPluginMessage(CustomServerUtil.getInstance(), "BungeeCord", out.toByteArray());
-            } else
-            if(e.getCurrentItem().getType() == Material.CHEST) {
-                ByteArrayDataOutput out = ByteStreams.newDataOutput();
-                out.writeUTF("Connect");
-                out.writeUTF("sw1");
 
                 p.sendPluginMessage(CustomServerUtil.getInstance(), "BungeeCord", out.toByteArray());
             }
