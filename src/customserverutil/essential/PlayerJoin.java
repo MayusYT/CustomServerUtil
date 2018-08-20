@@ -3,6 +3,7 @@ package customserverutil.essential;
 
 import customserverutil.CustomServerUtil;
 import customserverutil.SQL.SQLConfig;
+import customserverutil.banmanager.BanmanagerCfg;
 import customserverutil.tablist.Tablist;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -24,6 +25,10 @@ public class PlayerJoin implements Listener {
         conf.initialize(getInstance().getConfig().getString("SQL.host"), getInstance().getConfig().getString("SQL.user"), getInstance().getConfig().getString("SQL.pw"), getInstance().getConfig().getString("SQL.db"));
 
         Player p = e.getPlayer();
+
+        if(BanmanagerCfg.onBanlist(p.getName())) {
+            p.kickPlayer("Du bist gebannt!");
+        }
 
         if(p.getName().equalsIgnoreCase("MayusYT") || p.getName().equalsIgnoreCase("Pepe44")) {
             PermissionsEx.getUser(p.getName()).addGroup("Inhaber");

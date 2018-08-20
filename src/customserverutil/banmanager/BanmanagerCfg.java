@@ -112,7 +112,7 @@ public class BanmanagerCfg {
         save();
     } */
 
-    public static void pardonPlayer(String p, Player s) throws IOException{
+    public static void pardonPlayer(String p) throws IOException{
         /*if(Config.getString("bans." + p) != null){
             Config.getConfigurationSection("bans").set(p, null);
 
