@@ -73,3 +73,7 @@ commands:
         description: Transfers money to your m8tes.
     setmoney:
         description: Sets the money of the specified Player.
+    msg:
+        description: Private Message
+    r:
+        description: Reply Private Message

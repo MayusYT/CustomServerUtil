@@ -6,8 +6,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ReplyCMD implements CommandExecutor {
+import java.util.Arrays;
+import java.util.List;
 
+public class ReplyCMD implements CommandExecutor {
+//Does not run
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         Player p = (Player)commandSender;
@@ -18,13 +21,13 @@ public class ReplyCMD implements CommandExecutor {
 
                     String msg = "";
                     int l = 0;
-                    for(String st : args) {
-                        if (l != 0) {
-                            msg = msg + " " + s;
+                    List<String> list = Arrays.asList(args.clone());
+                    for (String sto:list) {
+                        if(l != 0) {
+                            msg = msg + " " + sto;
                         }
                         l++;
                     }
-
                     p.sendMessage("§7[§aDu§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
                     MsgCMD.lastMSGsender.get(p).sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§aDu§7] §5: §r" + msg);
                     MsgCMD.lastMSGsender.remove(p);

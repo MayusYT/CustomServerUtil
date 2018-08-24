@@ -5,6 +5,8 @@ import customserverutil.banmanager.Banmanager;
 import customserverutil.banmanager.PardonHandler;
 import customserverutil.banmanager.WarnHandler;
 import customserverutil.chat.ChatListener;
+import customserverutil.chat.MsgCMD;
+import customserverutil.chat.ReplyCMD;
 import customserverutil.economy.GetMoneyCMD;
 import customserverutil.economy.MoneyTransfer;
 import customserverutil.economy.SetMoneyCMD;
@@ -103,6 +105,8 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("money").setExecutor(new GetMoneyCMD());
         getCommand("setmoney").setExecutor(new SetMoneyCMD());
         getCommand("transfer").setExecutor(new MoneyTransfer());
+        getCommand("msg").setExecutor(new MsgCMD());
+        getCommand("r").setExecutor(new ReplyCMD());
 
         Bukkit.getPluginManager().registerEvents(new WarpProtection(), this);
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);

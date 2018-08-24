@@ -7,7 +7,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class MsgCMD implements CommandExecutor {
 
@@ -26,24 +28,29 @@ public class MsgCMD implements CommandExecutor {
                     try{
                         lastMSGsender.remove(p, rec);
                         String msg = "";
-                        int l = 0;
-                        for(String st : args) {
-                            if (l != 0) {
-                                msg = msg + " " + s;
+                        int l = 1;
+                        String recive = args[0];
+                        List<String> list = Arrays.asList(args.clone());
+                        for (String sto:list) {
+                            if(l != 0) {
+                                msg = msg + " " + sto;
                             }
                             l++;
                         }
 
-                        p.sendMessage("§7[§aDu§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
+
+
+                        p.sendMessage("§7[§aDu§7] §5> §7[§6" + recive + "§7] §5: §r" + msg);
                         rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§aDu§7] §5: §r" + msg);
                         lastMSGsender.put(rec, p);
                     } catch (NullPointerException e) {
                         lastMSGsender.remove(rec, p);
                         String msg = "";
-                        int l = 0;
-                        for(String st : args) {
-                            if (l != 0) {
-                                msg = msg + " " + s;
+                        int l = 1;
+                        List<String> list = Arrays.asList(args.clone());
+                        for (String sto:list) {
+                            if(l != 0) {
+                                msg = msg + " " + sto;
                             }
                             l++;
                         }
@@ -56,9 +63,10 @@ public class MsgCMD implements CommandExecutor {
                 } else {
                     String msg = "";
                     int l = 0;
-                    for(String st : args) {
-                        if (l != 0) {
-                            msg = msg + " " + s;
+                    List<String> list = Arrays.asList(args.clone());
+                    for (String sto:list) {
+                        if(l != 0) {
+                            msg = msg + " " + sto;
                         }
                         l++;
                     }
