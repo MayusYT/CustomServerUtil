@@ -17,45 +17,34 @@ public class PardonHandler implements CommandExecutor {
         Player p = (Player) sender;
 
 
-        if (sender instanceof Player) {
 
-            if (p.hasPermission("CustomLobby.unban")) {
-                if (args.length == 1) {
-                    if (Bukkit.getOfflinePlayer(args[0]) != null) {
-
-                        if (BanmanagerCfg.onBanlist(Bukkit.getOfflinePlayer(args[0]).getName())) {
-                            try {
-                                BanmanagerCfg.pardonPlayer(args[0]);
-                                p.sendMessage(CustomServerUtil.prefix + "§aSpieler erfolgreich gebannt!");
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                        if (BanmanagerCfg.onTempBanList(Bukkit.getOfflinePlayer(args[0]).getName())) {
-                            try {
-                                BanmanagerCfg.pardonPlayer(Bukkit.getOfflinePlayer(args[0]).getName());
-                                p.sendMessage(CustomServerUtil.prefix + "§aSpieler erfolgreich gebannt!");
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+        if(p.hasPermission("CustomLobby.unban")) {
+            if(args.length == 1) {
+                if(Bukkit.getOfflinePlayer(args[0]) != null) {
+                    if(BanmanagerCfg.onBanlist(Bukkit.getOfflinePlayer(args[0]).getName())) {
+                        try {
+                            BanmanagerCfg.pardonPlayer(Bukkit.getOfflinePlayer(args[0]).getName(), p);
+                            p.sendMessage(CustomServerUtil.prefix + "§aSpieler erfolgreich gebannt!");
+                        } catch(IOException e) {
+                            e.printStackTrace();
                         }
 
-                    } else {
-                        p.sendMessage(CustomServerUtil.prefix + "§cDieser Spieler existiert nicht!");
+                    } if (BanmanagerCfg.onTempBanList(Bukkit.getOfflinePlayer(args[0]).getName())) {
+                        try{
+                            BanmanagerCfg.pardonPlayer(Bukkit.getOfflinePlayer(args[0]).getName(), p);
+                            p.sendMessage(CustomServerUtil.prefix + "§aSpieler erfolgreich gebannt!");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 } else {
-                    p.sendMessage(CustomServerUtil.noPermission);
+                    p.sendMessage(CustomServerUtil.prefix + "§cDieser Spieler existiert nicht!");
                 }
             } else {
-                try {
-                    BanmanagerCfg.pardonPlayer(args[0]);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                p.sendMessage(CustomServerUtil.prefix + "§cBenutzung: /pardon <Spieler>");
             }
-
-
+        } else {
+            p.sendMessage(CustomServerUtil.noPermission);
         }
 
         return true;
