@@ -19,7 +19,7 @@ public class ScoreboardListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-    if(!Bukkit.getScheduler().isCurrentlyRunning(shed)) {
+    /*if(!Bukkit.getScheduler().isCurrentlyRunning(shed)) {
 
         shed = Bukkit.getScheduler().scheduleSyncRepeatingTask(CustomServerUtil.getInstance(), new Runnable() {
             @Override
@@ -30,11 +30,11 @@ public class ScoreboardListener implements Listener {
 
     }
 
-
+*/
     }
 
     public void reloadScoreboard(Player p) {
-
+/*
         Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective obj = board.registerNewObjective("Snapecraft", "dummy");
 
@@ -44,13 +44,13 @@ public class ScoreboardListener implements Listener {
         Score six = obj.getScore("§2Willkommen, " + p.getName());
         Score five = obj.getScore("§1Rang:");
         Score four = obj.getScore(ChatListener.getRankString(p));
-        /*Score three = obj.getScore("§1Money:");
+        Score three = obj.getScore("§1Money:");
         Score two;
         try {
             two = obj.getScore("§2" + GetMoney.getMoneyByPlayer(p));
         } catch (NullPointerException e) {
             two = obj.getScore("§eERROR");
-        }*/
+        }
         Score one = obj.getScore("§1Spieler online:");
         Score zero = obj.getScore("§2" + Bukkit.getOnlinePlayers().size() + "§7 / §2" + Bukkit.getMaxPlayers());
 
@@ -64,7 +64,7 @@ public class ScoreboardListener implements Listener {
         zero.setScore(0);
 
         p.setScoreboard(board);
-
+*/
     }
 
 
