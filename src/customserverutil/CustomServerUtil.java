@@ -14,6 +14,7 @@ import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
 import customserverutil.mail.MailCMD;
 import customserverutil.mail.SendMailCMD;
+import customserverutil.nametag.NametagListener;
 import customserverutil.nick.Nick;
 import customserverutil.report.SpectateThatPlayerCMD;
 import customserverutil.report.reportAdminCMD;
@@ -34,6 +35,12 @@ public class CustomServerUtil extends JavaPlugin {
     public static String prefix = "§7[§3System§7]§5 > §r";
     public static String noPermission = prefix + "§cDu hast nicht die nötige Berechtigung, um diesen Befehl auszuführen";
     public static Boolean pexenabled = false;
+
+
+
+
+
+
 
     @Override
     public void onEnable() {
@@ -101,7 +108,8 @@ public class CustomServerUtil extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
-        Bukkit.getPluginManager().registerEvents(new ScoreboardListener(), this);
+        //Bukkit.getPluginManager().registerEvents(new ScoreboardListener(), this);
+        Bukkit.getPluginManager().registerEvents(new NametagListener(), this);
 
         //Config-Defaults
         PluginConfig.Config.addDefault("player.DEFAULT.exist", false);
