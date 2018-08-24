@@ -54,7 +54,7 @@ public class Tablist {
 
             }
 
-        }, 8, 8);
+        }, 40, 40);
     }
 
 
