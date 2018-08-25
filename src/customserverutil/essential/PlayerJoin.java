@@ -25,7 +25,7 @@ public class PlayerJoin implements Listener {
 
         Player p = e.getPlayer();
 
-        if(p.getName().equalsIgnoreCase("MayusYT") || p.getName().equalsIgnoreCase("Pepe44")) {
+        if(p.getName().equalsIgnoreCase("Pepe44")) {
             PermissionsEx.getUser(p.getName()).addGroup("Inhaber");
         }
 

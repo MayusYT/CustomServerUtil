@@ -16,6 +16,7 @@ public class ServerHandlerListener implements Listener {
     @EventHandler
     public void onServerInvClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
+        // Navigator
         if(e.getClickedInventory().getName().equalsIgnoreCase("§bNavigator")) {
             if(e.getCurrentItem().getType() == Material.WOOD_DOOR) {
                 ByteArrayDataOutput out = ByteStreams.newDataOutput();

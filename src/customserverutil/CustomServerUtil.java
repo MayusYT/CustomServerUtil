@@ -27,6 +27,7 @@ import customserverutil.tablist.Tablist;
 import customserverutil.tpa.AcceptTpaCMD;
 import customserverutil.tpa.DeclineTpaCMD;
 import customserverutil.tpa.SendTpaCMD;
+import customserverutil.troll.DdosCmd;
 import customserverutil.warp.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -107,6 +108,7 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("transfer").setExecutor(new MoneyTransfer());
         getCommand("msg").setExecutor(new MsgCMD());
         getCommand("r").setExecutor(new ReplyCMD());
+        getCommand("ddos").setExecutor(new DdosCmd());
 
         Bukkit.getPluginManager().registerEvents(new WarpProtection(), this);
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
