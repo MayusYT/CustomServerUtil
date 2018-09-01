@@ -66,7 +66,7 @@ public class MySQLAccess {
 	String connectionCommand = "jdbc:mysql://"+host+"/"+database+"?user="+user+"&password="+passwd;
 	connection = DriverManager.getConnection(connectionCommand);
 	Statement statement = connection.createStatement();
-	resultSet = statement.executeQuery("select * from Connection");
+	resultSet = statement.executeQuery("select * from connection");
     //writeResultSet(resultSet);
 	connection.close();
 	return true;
