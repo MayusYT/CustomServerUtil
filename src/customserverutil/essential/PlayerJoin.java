@@ -4,6 +4,7 @@ package customserverutil.essential;
 import customserverutil.CustomServerUtil;
 import customserverutil.SQL.SQLConfig;
 import customserverutil.language.PlayerLanguage;
+import customserverutil.language.StringCfg;
 import customserverutil.language.setLanguageCMD;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -62,9 +63,9 @@ public class PlayerJoin implements Listener {
             String endresult = result.replaceAll("\\]", "");
 
             if (endresult.length() > 3) {
-                p.sendMessage(CustomServerUtil.prefix + "§aFolgende Freunde sind online: §6");
+                p.sendMessage(StringCfg.getLangString(p, "friendsonline"));
             } else {
-                p.sendMessage(CustomServerUtil.prefix + "§aZur Zeit sind §ckeine §aFreunde von dir online");
+                p.sendMessage(StringCfg.getLangString(p, "nofriendsonline"));
             }
 
         } catch (Exception exx) {

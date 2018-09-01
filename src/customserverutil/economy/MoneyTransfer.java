@@ -3,6 +3,7 @@ package customserverutil.economy;
 import customserverutil.API;
 import customserverutil.CustomServerUtil;
 import customserverutil.SQL.SQLConfig;
+import customserverutil.language.StringCfg;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -34,11 +35,9 @@ public class MoneyTransfer implements CommandExecutor {
                         SetMoney.setMoneyByPlayer(Bukkit.getPlayer(args[0]), moneyamountofreceiver + moneyamounttobetransferred);
 
                         p.sendMessage(CustomServerUtil.prefix + "§c-" + args[1]);
-                        p.sendMessage(CustomServerUtil.prefix + "Dem Spieler " + args[0] + " wurden §a" + args[1] +
-                                "$ auf das Konto gebucht!");
+                        p.sendMessage(StringCfg.getLangString(p, "transferMoneySender1") + args[1] + StringCfg.getLangString(p, "transferMoneySender2") + args[0]);
                         Bukkit.getPlayer(args[0]).sendMessage(CustomServerUtil.prefix + "§a+" + args[1] + "$");
-                        Bukkit.getPlayer(args[0]).sendMessage(CustomServerUtil.prefix + "Der Spieler " + p.getName() +
-                                " hat dir §a" + args[1] + "$§r gegeben!");
+                        Bukkit.getPlayer(args[0]).sendMessage(StringCfg.getLangString(p, "transferMoneyReceiver1") + args[1] + StringCfg.getLangString(p, "transferMoneyReceiver2"));
                     } else {
                         p.sendMessage(CustomServerUtil.prefix + "§cDu hast nicht genügend Geld dafür!");
                     }

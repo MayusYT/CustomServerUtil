@@ -94,8 +94,6 @@ public class friendsCMD implements CommandExecutor {
                                         }
                                     }
                                     if (gotrequest = true) {
-                                        p.sendMessage("MakeFriend");
-                                        sender.sendMessage("MakeFriend");
                                         friendsUtil.makeFriend((Player) sender, p);
                                         friendsUtil.makeFriend(p, (Player) sender);
 

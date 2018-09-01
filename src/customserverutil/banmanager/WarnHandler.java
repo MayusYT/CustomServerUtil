@@ -24,8 +24,7 @@ public class WarnHandler implements CommandExecutor {
 
                             // BanmanagerCfg.setWarns(p, Bukkit.getPlayer(args[0]), 0);
                         } else {
-                            Bukkit.getPlayer(args[0]).sendMessage(CustomServerUtil.prefix + "Du hast einen §cWarn §rerhalten. Bei 3 Warns" +
-                                    " wirst du von Netzwerk verbannt! Anzahl Warns: " + BanmanagerCfg.getWarns(Bukkit.getPlayer(args[0])));
+                            Bukkit.getPlayer(args[0]).sendMessage(StringCfg.getLangString(Bukkit.getPlayer(args[0]), "gotWarn") + BanmanagerCfg.getWarns(Bukkit.getPlayer(args[0])));
                         }
                     } catch(Exception e) {
                         e.printStackTrace();

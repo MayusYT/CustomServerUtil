@@ -1,6 +1,7 @@
 package customserverutil.chat;
 
 import customserverutil.CustomServerUtil;
+import customserverutil.language.StringCfg;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -40,8 +41,8 @@ public class MsgCMD implements CommandExecutor {
 
 
 
-                        p.sendMessage("§7[§aDu§7] §5> §7[§6" + recive + "§7] §5: §r" + msg);
-                        rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§aDu§7] §5: §r" + msg);
+                        p.sendMessage("§7[§a" + StringCfg.getLangString(p, "msgYOU") + "§7] §5> §7[§6" + recive + "§7] §5: §r" + msg);
+                        rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§a" + StringCfg.getLangString(rec, "msgYOU") + "§7] §5: §r" + msg);
                         lastMSGsender.put(rec, p);
                     } catch (NullPointerException e) {
                         lastMSGsender.remove(rec, p);
@@ -55,9 +56,9 @@ public class MsgCMD implements CommandExecutor {
                             l++;
                         }
 
-                        p.sendMessage("§7[§aDu§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
-                        rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§aDu§7] §5: §r" + msg);
-                        lastMSGsender.put(p, rec);
+                        p.sendMessage("§7[§a" + StringCfg.getLangString(p, "msgYOU") + "§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
+                        rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§a" + StringCfg.getLangString(rec, "msgYOU") + "§7] §5: §r" + msg);
+                        lastMSGsender.put(rec, p);
                     }
 
                 } else {
@@ -71,9 +72,9 @@ public class MsgCMD implements CommandExecutor {
                         l++;
                     }
 
-                    p.sendMessage("§7[§aDu§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
-                    rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§aDu§7] §5: §r" + msg);
-                    lastMSGsender.put(p, rec);
+                    p.sendMessage("§7[§a" + StringCfg.getLangString(p, "msgYOU") + "§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
+                    rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§a" + StringCfg.getLangString(rec, "msgYOU") + "§7] §5: §r" + msg);
+                    lastMSGsender.put(rec, p);
                 }
 
 

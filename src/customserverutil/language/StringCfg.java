@@ -1,5 +1,6 @@
 package customserverutil.language;
 
+import customserverutil.CustomServerUtil;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -31,19 +32,18 @@ public class StringCfg {
     public static void addStrings() {
 
         //en_US
-        Config.set("strings.en_US.noperm", "§cYou don't have the permission to execute this command!");
-        Config.set("strings.en_US.nofriendsonline", "§cNobody §rfrom your friends list is currently online.");
-        Config.set("strings.en_US.friendscount1", "§aThere are §6");
-        Config.set("strings.en_US.friendscount2", "§a friends online");
-        Config.set("strings.en_US.msgYOU", "you");
-        Config.set("strings.en_US.gotWarn", "§aYou just received a warn! At 3 warns you will be banned. Amount of warns: §c");
-        Config.set("strings.en_US.getStarterMoney", "§aCongratulations! You just got your starter money in value of §61000$§a!");
-        Config.set("strings.en_US.getMoney", "§aYour current balance is: §6");
-        Config.set("strings.en_US.transferMoneySender1", "§aYou tranferred §6");
-        Config.set("strings.en_US.transferMoneySender1", "$§a to §6");
-        Config.set("strings.en_US.transferMoneyReceiver1", "§aYou just received §6");
-        Config.set("strings.en_US.transferMoneyReceiver1", "$§afrom §6");
-        Config.set("strings.en_US.ping", "§aYour current ping is: §6");
+        Config.set("strings.en_US.noperm", "§cYou don't have the permission to execute this command!"); //
+        Config.set("strings.en_US.nofriendsonline", "§cNobody §rfrom your friends list is currently online.");//
+        Config.set("strings.en_US.friendsonline", "§aThese friends of you are online: §6");//
+        Config.set("strings.en_US.msgYOU", "you");//
+        Config.set("strings.en_US.gotWarn", "§aYou just received a warn! At 3 warns you will be banned. Amount of warns: §c"); //
+        Config.set("strings.en_US.getStarterMoney", "§aCongratulations! You just got your starter money in value of §61000$§a!");//
+        Config.set("strings.en_US.getMoney", "§aYour current balance is: §6");//
+        Config.set("strings.en_US.transferMoneySender1", "§aYou tranferred §6");//
+        Config.set("strings.en_US.transferMoneySender2", "$§a to §6");//
+        Config.set("strings.en_US.transferMoneyReceiver1", "§aYou just received §6");//
+        Config.set("strings.en_US.transferMoneyReceiver2", "$§afrom §6");//
+        Config.set("strings.en_US.ping", "§aYour current ping is: §6");//
         Config.set("strings.en_US.FriendRequestSender", "§aFriend request sent.");
         Config.set("strings.en_US.FriendRequestReceiver", "§a wants to be your friend!");
         Config.set("strings.en_US.accept", "§aACCEPT");
@@ -89,9 +89,9 @@ public class StringCfg {
         String langString = "";
 
         if(PlayerLanguage.getLanguage(p).equalsIgnoreCase("en_US")) {
-            langString = Config.getString("strings.en_US." + codename);
+            langString = CustomServerUtil.prefix + Config.getString("strings.en_US." + codename);
         } else {
-            langString = Config.getString("strings.de_DE." + codename);
+            langString = CustomServerUtil.prefix + Config.getString("strings.de_DE." + codename);
         }
 
         return langString;

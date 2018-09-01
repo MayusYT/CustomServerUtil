@@ -2,6 +2,7 @@ package customserverutil.economy;
 
 import customserverutil.CustomServerUtil;
 import customserverutil.SQL.SQLConfig;
+import customserverutil.language.StringCfg;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,9 +23,9 @@ public class GetMoneyCMD implements CommandExecutor {
             Player p = (Player) sender;
             try {
                 if (GetMoney.getMoneyByPlayer(p) != 0) {
-                    p.sendMessage(CustomServerUtil.prefix + "Dein Kontostand: §a" + GetMoney.getMoneyByPlayer(p) + "$");
+                    p.sendMessage(StringCfg.getLangString(p, "getMoney"));
                 } else {
-                    p.sendMessage(CustomServerUtil.prefix + "Glückwunsch! Du hast dein Startgeld bekommen: §a" + 1000 + "$");
+                    p.sendMessage(StringCfg.getLangString(p, "getStarterMoney"));
                     //CustomLobby.getInstance().getConfig().set("players." + p.getName() + ".money", 1000);
                     GetMoney.setMoneyByPlayer(p, 1000);
                 }
