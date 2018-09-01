@@ -24,7 +24,7 @@ public class Vanish implements CommandExecutor {
         if(p.hasPermission("CustomServerUtil.vanish")) {
             if(!vanishedPlayers.contains(p)) {
                 vanishedPlayers.add(p);
-                PotionEffect potion = new PotionEffect(PotionEffectType.INVISIBILITY, 10, 10);
+                PotionEffect potion = new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 10);
                 p.addPotionEffect(potion);
             } else {
                 vanishedPlayers.remove(p);

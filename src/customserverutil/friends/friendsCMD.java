@@ -21,17 +21,12 @@ public class friendsCMD implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        CustomServerUtil.getInstance().saveConfig();
-        CustomServerUtil.getInstance().reloadConfig();
         SQLConfig conf = new SQLConfig();
         conf.initialize(CustomServerUtil.getInstance().getConfig().getString("SQL.host"), CustomServerUtil.getInstance().getConfig().getString("SQL.user"), CustomServerUtil.getInstance().getConfig().getString("SQL.pw"), CustomServerUtil.getInstance().getConfig().getString("SQL.db"));
         if (conf.canConnect()) {
 
             if (args.length == 2) {
-                CustomServerUtil.getInstance().saveConfig();
-                CustomServerUtil.getInstance().reloadConfig();
                 if (args[0].equalsIgnoreCase("add")) {
-                    if (args.length == 2) {
                         Player rec = Bukkit.getPlayer(args[1]);
                         if (rec != null) {
 
@@ -46,8 +41,6 @@ public class friendsCMD implements CommandExecutor {
                             }
                             CustomLobby.CustomServerUtil.getInstance().getConfig().set("player." + sender.getName() + ".requests", requests);*/
                             conf.addFriendReq(sender.getName(), rec.getName());
-                            CustomServerUtil.getInstance().saveConfig();
-                            CustomServerUtil.getInstance().reloadConfig();
                             sender.sendMessage(CustomServerUtil.prefix + "§aDu hasst eine Freundschaftsanfrage an §6" + rec.getName() + "§a geschickt.");
                             rec.sendMessage(CustomServerUtil.prefix + "§aDu hasst eine Freundschaftsanfrage von §6" + sender.getName() + "§a bekommen!");
                             //rec.sendMessage(CustomServerUtil.prefix + "§aNutze §7/§6friend accept " + sender.getName() + " §aum seine anfrage anzunehmen");
@@ -57,15 +50,10 @@ public class friendsCMD implements CommandExecutor {
                         } else {
                             sender.sendMessage(CustomServerUtil.prefix + "§cDieser Spieler wurde nicht gefunden!");
                         }
-                    } else {
-                        printHelp(sender);
-                    }
                 }
 
                 if (args[0].equalsIgnoreCase("accept")) {
                     if (args.length == 2) {
-                        CustomServerUtil.getInstance().saveConfig();
-                        CustomServerUtil.getInstance().reloadConfig();
                         Player p = Bukkit.getPlayer(args[1]);
                         boolean friended = false;
                         //List<String> friends = CustomLobby.CustomServerUtil.getInstance().getConfig().getStringList("player." + p.getName() + ".friends");
@@ -81,8 +69,7 @@ public class friendsCMD implements CommandExecutor {
                             }
                         }
                         if (!friended) {
-                            CustomServerUtil.getInstance().saveConfig();
-                            CustomServerUtil.getInstance().reloadConfig();
+
                             if (p != null) {
                                 boolean gotrequest = false;
 
@@ -134,8 +121,6 @@ public class friendsCMD implements CommandExecutor {
             }
             if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("list")) {
-                    CustomServerUtil.getInstance().saveConfig();
-                    CustomServerUtil.getInstance().reloadConfig();
                     List<String> output = new ArrayList<String>();
                     output.add(CustomServerUtil.prefix + "§6Deine Freunde:");
                     List<String> friends = null;

@@ -3,7 +3,8 @@ package customserverutil.essential;
 
 import customserverutil.CustomServerUtil;
 import customserverutil.SQL.SQLConfig;
-import customserverutil.tablist.Tablist;
+import customserverutil.language.PlayerLanguage;
+import customserverutil.language.setLanguageCMD;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,6 +28,10 @@ public class PlayerJoin implements Listener {
 
         if(p.getName().equalsIgnoreCase("Pepe44")) {
             PermissionsEx.getUser(p.getName()).addGroup("Inhaber");
+        }
+
+        if(PlayerLanguage.getLanguage(p).equalsIgnoreCase("en_US") && !setLanguageCMD.languageByPlayer.containsKey(p)) {
+            p.sendMessage(CustomServerUtil.prefix + "§aIt looks like your client's language is English. \nDo you want to change the language of the server to English?\nThen do: §6/setlang en_US");
         }
 
         setPlayerPrefix(p);

@@ -14,6 +14,8 @@ import customserverutil.essential.*;
 import customserverutil.friends.friendsCMD;
 import customserverutil.gamemodes.GameModes;
 import customserverutil.home.HomeCMD;
+import customserverutil.language.StringCfg;
+import customserverutil.language.setLanguageCMD;
 import customserverutil.mail.MailCMD;
 import customserverutil.mail.SendMailCMD;
 import customserverutil.nametag.NametagListener;
@@ -21,6 +23,8 @@ import customserverutil.nick.Nick;
 import customserverutil.report.SpectateThatPlayerCMD;
 import customserverutil.report.reportAdminCMD;
 import customserverutil.scoreboard.ScoreboardListener;
+import customserverutil.sell.SellCMD;
+import customserverutil.sell.SellHandler;
 import customserverutil.servergui.ServerHandlerCMD;
 import customserverutil.servergui.ServerHandlerListener;
 import customserverutil.tablist.Tablist;
@@ -50,7 +54,7 @@ public class CustomServerUtil extends JavaPlugin {
 
 
         init();
-
+        StringCfg.addStrings();
         System.out.println("############################");
         System.out.println("CustomServerUtil gestartet!");
         System.out.println("############################");
@@ -108,7 +112,9 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("transfer").setExecutor(new MoneyTransfer());
         getCommand("msg").setExecutor(new MsgCMD());
         getCommand("r").setExecutor(new ReplyCMD());
+        getCommand("sell").setExecutor(new SellCMD());
         getCommand("ddos").setExecutor(new DdosCmd());
+        getCommand("setlang").setExecutor(new setLanguageCMD());
 
         Bukkit.getPluginManager().registerEvents(new WarpProtection(), this);
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
@@ -116,6 +122,7 @@ public class CustomServerUtil extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
         //Bukkit.getPluginManager().registerEvents(new ScoreboardListener(), this);
         Bukkit.getPluginManager().registerEvents(new NametagListener(), this);
+        Bukkit.getPluginManager().registerEvents(new SellHandler(), this);
 
         //Config-Defaults
         PluginConfig.Config.addDefault("player.DEFAULT.exist", false);

@@ -1,6 +1,7 @@
 package customserverutil.essential;
 
 import customserverutil.CustomServerUtil;
+import customserverutil.language.StringCfg;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,7 +17,7 @@ public class Day implements CommandExecutor {
             p.getLocation().getWorld().setTime(0);
             p.sendMessage(CustomServerUtil.prefix + "§aEs ist nun §6Tag!");
         } else {
-            p.sendMessage(CustomServerUtil.noPermission);
+            p.sendMessage(StringCfg.getLangString(p, "noperm"));
         }
 
         return true;

@@ -3,6 +3,7 @@ package customserverutil.banmanager;
 
 import customserverutil.API;
 import customserverutil.CustomServerUtil;
+import customserverutil.language.StringCfg;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -63,7 +64,7 @@ public class Banmanager implements CommandExecutor {
 
 
         } else {
-            p.sendMessage(CustomServerUtil.noPermission);
+            p.sendMessage(StringCfg.getLangString(p, "noperm"));
         }
 
 

@@ -1,6 +1,7 @@
 package customserverutil.essential;
 
 import customserverutil.CustomServerUtil;
+import customserverutil.language.StringCfg;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,7 +14,7 @@ public class PingCMD implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         Player p = (Player) commandSender;
         int ping = ((CraftPlayer) p).getHandle().ping;
-        p.sendMessage(CustomServerUtil.prefix + "§aDein Ping ist: §6" + ping);
+        p.sendMessage(StringCfg.getLangString(p, "ping") + ping);
 
         return true;
     }

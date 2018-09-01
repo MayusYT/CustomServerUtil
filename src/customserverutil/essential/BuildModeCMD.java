@@ -1,6 +1,7 @@
 package customserverutil.essential;
 
 import customserverutil.CustomServerUtil;
+import customserverutil.language.StringCfg;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +26,7 @@ public class BuildModeCMD implements CommandExecutor {
                 p.sendMessage(CustomServerUtil.prefix + "§cDu bist nun nicht mehr im §6Baumodus§c!");
             }
         } else {
-            p.sendMessage(CustomServerUtil.noPermission);
+            p.sendMessage(StringCfg.getLangString(p, "noperm"));
         }
         return true;
 

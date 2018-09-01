@@ -3,6 +3,7 @@ package customserverutil.economy;
 import customserverutil.API;
 import customserverutil.CustomServerUtil;
 import customserverutil.SQL.SQLConfig;
+import customserverutil.language.StringCfg;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -38,7 +39,7 @@ public class SetMoneyCMD implements CommandExecutor {
                         p.sendMessage(CustomServerUtil.prefix + args[0] + " ist kein Spieler");
                     }
                 } else {
-                    p.sendMessage(CustomServerUtil.noPermission);
+                    p.sendMessage(StringCfg.getLangString(p, "noperm"));
                 }
 
 

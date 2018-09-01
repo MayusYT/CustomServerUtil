@@ -2,7 +2,7 @@ name: CustomServerUtil
 authors: [Mayus, Pepe44, Ayley, Tallerik]
 version: 1.0
 main: customserverutil.CustomServerUtil
-softdepend: [PermissionsEx]
+softdepend: [PermissionsEx, NameTagChanger]
 commands:
     c:
         description: Creative mode
@@ -77,3 +77,9 @@ commands:
         description: Private Message
     r:
         description: Reply Private Message
+    sell:
+        description: sells to a buyer
+    ddos:
+        description: sth like antioch
+    setlang:
+        description: Sets the language for a player
