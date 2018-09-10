@@ -7,6 +7,7 @@ import customserverutil.language.PlayerLanguage;
 import customserverutil.language.StringCfg;
 import customserverutil.language.setLanguageCMD;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,6 +37,7 @@ public class PlayerJoin implements Listener {
         }
 
         setPlayerPrefix(p);
+        setPlayerOnGround(p);
 
         try{
             for(String pl : conf.getFriends(p.getName())) {
@@ -104,6 +106,16 @@ public class PlayerJoin implements Listener {
             p.setPlayerListName("§l§4Inhaber | §r" + p.getName());
 
         }
+
+    }
+
+    public void setPlayerOnGround(Player p) {
+        if(!p.isOnGround()) {
+            while (p.isOnGround()) {
+                p.teleport(p.getLocation().subtract(0, 1, 0));
+            }
+        }
+
 
     }
 

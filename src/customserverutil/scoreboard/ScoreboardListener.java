@@ -19,7 +19,7 @@ public class ScoreboardListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-    /*if(!Bukkit.getScheduler().isCurrentlyRunning(shed)) {
+    if(!Bukkit.getScheduler().isCurrentlyRunning(shed)) {
 
         shed = Bukkit.getScheduler().scheduleSyncRepeatingTask(CustomServerUtil.getInstance(), new Runnable() {
             @Override
@@ -30,11 +30,11 @@ public class ScoreboardListener implements Listener {
 
     }
 
-*/
+
     }
 
     public void reloadScoreboard(Player p) {
-/*
+
         Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective obj = board.registerNewObjective("Snapecraft", "dummy");
 
@@ -64,7 +64,7 @@ public class ScoreboardListener implements Listener {
         zero.setScore(0);
 
         p.setScoreboard(board);
-*/
+
     }
 
 

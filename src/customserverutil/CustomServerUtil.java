@@ -18,7 +18,6 @@ import customserverutil.language.StringCfg;
 import customserverutil.language.setLanguageCMD;
 import customserverutil.mail.MailCMD;
 import customserverutil.mail.SendMailCMD;
-import customserverutil.nametag.NametagListener;
 import customserverutil.nick.Nick;
 import customserverutil.report.SpectateThatPlayerCMD;
 import customserverutil.report.reportAdminCMD;
@@ -120,8 +119,8 @@ public class CustomServerUtil extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
-        //Bukkit.getPluginManager().registerEvents(new ScoreboardListener(), this);
-        Bukkit.getPluginManager().registerEvents(new NametagListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ScoreboardListener(), this);
+       // Bukkit.getPluginManager().registerEvents(new NametagListener(), this);
         Bukkit.getPluginManager().registerEvents(new SellHandler(), this);
 
         //Config-Defaults

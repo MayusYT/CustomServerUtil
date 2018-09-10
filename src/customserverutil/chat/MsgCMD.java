@@ -44,6 +44,7 @@ public class MsgCMD implements CommandExecutor {
                         p.sendMessage("§7[§a" + StringCfg.getLangString(p, "msgYOU") + "§7] §5> §7[§6" + recive + "§7] §5: §r" + msg);
                         rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§a" + StringCfg.getLangString(rec, "msgYOU") + "§7] §5: §r" + msg);
                         lastMSGsender.put(rec, p);
+                        p.sendMessage(lastMSGsender.toString());
                     } catch (NullPointerException e) {
                         lastMSGsender.remove(rec, p);
                         String msg = "";
@@ -59,6 +60,7 @@ public class MsgCMD implements CommandExecutor {
                         p.sendMessage("§7[§a" + StringCfg.getLangString(p, "msgYOU") + "§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
                         rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§a" + StringCfg.getLangString(rec, "msgYOU") + "§7] §5: §r" + msg);
                         lastMSGsender.put(rec, p);
+                        p.sendMessage(lastMSGsender.toString());
                     }
 
                 } else {
@@ -75,6 +77,7 @@ public class MsgCMD implements CommandExecutor {
                     p.sendMessage("§7[§a" + StringCfg.getLangString(p, "msgYOU") + "§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
                     rec.sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§a" + StringCfg.getLangString(rec, "msgYOU") + "§7] §5: §r" + msg);
                     lastMSGsender.put(rec, p);
+                    p.sendMessage(lastMSGsender.toString());
                 }
 
 

@@ -18,16 +18,35 @@ public class ServerHandlerListener implements Listener {
         Player p = (Player) e.getWhoClicked();
         // Navigator
         if(e.getClickedInventory().getName().equalsIgnoreCase("§bNavigator")) {
+
             if(e.getCurrentItem().getType() == Material.WOOD_DOOR) {
                 ByteArrayDataOutput out = ByteStreams.newDataOutput();
                 out.writeUTF("Connect");
                 out.writeUTF("lobby");
 
                 p.sendPluginMessage(CustomServerUtil.getInstance(), "BungeeCord", out.toByteArray());
-            } if(e.getCurrentItem().getType() == Material.BRICK) {
+            }else if(e.getCurrentItem().getType() == Material.BRICK) {
                 ByteArrayDataOutput out = ByteStreams.newDataOutput();
                 out.writeUTF("Connect");
-                out.writeUTF("cb1");
+                out.writeUTF("CB1");
+
+                p.sendPluginMessage(CustomServerUtil.getInstance(), "BungeeCord", out.toByteArray());
+            } else if(e.getCurrentItem().getType() == Material.GRASS) {
+                ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                out.writeUTF("Connect");
+                out.writeUTF("skyblock");
+
+                p.sendPluginMessage(CustomServerUtil.getInstance(), "BungeeCord", out.toByteArray());
+            } else if(e.getCurrentItem().getType() == Material.IRON_SWORD) {
+                ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                out.writeUTF("Connect");
+                out.writeUTF("1vs1");
+
+                p.sendPluginMessage(CustomServerUtil.getInstance(), "BungeeCord", out.toByteArray());
+            } else if(e.getCurrentItem().getType() == Material.IRON_BLOCK) {
+                ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                out.writeUTF("Connect");
+                out.writeUTF("Builder");
 
                 p.sendPluginMessage(CustomServerUtil.getInstance(), "BungeeCord", out.toByteArray());
             }

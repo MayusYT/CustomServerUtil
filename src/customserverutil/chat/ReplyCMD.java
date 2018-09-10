@@ -16,7 +16,6 @@ public class ReplyCMD implements CommandExecutor {
         Player p = (Player)commandSender;
         if(args.length >= 1) {
             if(MsgCMD.lastMSGsender.containsKey(p) || MsgCMD.lastMSGsender.containsValue(p)) {
-                try {
                     MsgCMD.lastMSGsender.remove(p);
 
                     String msg = "";
@@ -28,13 +27,13 @@ public class ReplyCMD implements CommandExecutor {
                         }
                         l++;
                     }
-                    p.sendMessage("§7[§aDu§7] §5> §7[§6" + args[0] + "§7] §5: §r" + msg);
+                    p.sendMessage("§7[§aDu§7] §5> §7[§6" + MsgCMD.lastMSGsender.get(p) + "§7] §5: §r" + msg);
                     MsgCMD.lastMSGsender.get(p).sendMessage("§7[§5" + p.getName() + "§7] §5> §7[§aDu§7] §5: §r" + msg);
                     MsgCMD.lastMSGsender.remove(p);
-                } catch (Exception e) {
+                /*} catch (Exception e) {
                     p.sendMessage(CustomServerUtil.prefix + "§cDu hast keine Nachricht bekommen!");
                     return true;
-                }
+                }*/
 
             }
         } else {
