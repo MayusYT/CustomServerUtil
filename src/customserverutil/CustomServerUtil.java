@@ -114,7 +114,7 @@ public class CustomServerUtil extends JavaPlugin {
         getCommand("sell").setExecutor(new SellCMD());
         getCommand("ddos").setExecutor(new DdosCmd());
         getCommand("setlang").setExecutor(new setLanguageCMD());
-
+        getCommand("force").setExecutor(new ForceCMD());
         Bukkit.getPluginManager().registerEvents(new WarpProtection(), this);
         Bukkit.getPluginManager().registerEvents(new ServerHandlerListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);

@@ -2,7 +2,7 @@ name: CustomServerUtil
 authors: [Mayus, Pepe44, Ayley, Tallerik]
 version: 1.0
 main: customserverutil.CustomServerUtil
-softdepend: [PermissionsEx, NameTagChanger]
+softdepend: [PermissionsEx]
 commands:
     c:
         description: Creative mode
@@ -83,3 +83,5 @@ commands:
         description: sth like antioch
     setlang:
         description: Sets the language for a player
+    force:
+        description: Forces a player to execute a command
