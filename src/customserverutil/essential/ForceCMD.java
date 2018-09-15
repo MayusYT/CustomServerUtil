@@ -16,15 +16,14 @@ public class ForceCMD implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
-        Player p = (Player )sender;
+        Player p = (Player)sender;
 
         if(PermissionsEx.getUser(p).inGroup("Inhaber")) {
             if (args.length >= 2) {
                 if(Bukkit.getPlayer(args[0]) != null) {
                     String msg ="";
                     int l = 1;
-                    List<String> list = Arrays.asList(args.clone());
-                    for (String sto:list) {
+                    for (String sto : args) {
                         if(l != 0) {
                             msg = msg + " " + sto;
                         }
