@@ -46,11 +46,7 @@ public class ScoreboardListener implements Listener {
         Score four = obj.getScore(ChatListener.getRankString(p));
         Score three = obj.getScore("§1Money:");
         Score two;
-        try {
-            two = obj.getScore("§2" + GetMoney.getMoneyByPlayer(p));
-        } catch (NullPointerException e) {
-            two = obj.getScore("§eERROR");
-        }
+
         Score one = obj.getScore("§1Spieler online:");
         Score zero = obj.getScore("§2" + Bukkit.getOnlinePlayers().size() + "§7 / §2" + Bukkit.getMaxPlayers());
 
